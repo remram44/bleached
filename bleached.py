@@ -50,7 +50,7 @@ DEFAULT_TAGS = {
 
 DEFAULT_ATTRIBUTES = {
     'a': {'href', 'title'},
-    'img': {'src'},
+    'img': {'src', 'width', 'height'},
 }
 
 
