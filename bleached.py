@@ -1,6 +1,9 @@
 import re
 
 
+__version__ = '1.0.0'
+
+
 __all__ = ['UnsafeInput', 'check_html', 'is_html_bleached']
 
 
