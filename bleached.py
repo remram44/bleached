@@ -270,13 +270,14 @@ class Checker(object):
             if c != '=':
                 self.fail("Unexpected character %r in attribute" % c)
             self.skip_whitespace()
-            if self.consume_char() != '"':
+            quote = self.consume_char()
+            if quote != '"' and quote != "'":
                 self.fail("Missing quote for attribute value")
 
             # Read value
             while True:
                 c = self.peek_char()
-                if c == '"':
+                if c == quote:
                     self.consume_char()
                     break
                 elif c in '<>':
