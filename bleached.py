@@ -141,6 +141,8 @@ class Checker(object):
                     if what == 'open':
                         if tag_name not in VOID_ELEMENTS:
                             self.element_stack.append(tag_name)
+                            if len(self.element_stack) >= 1000:
+                                self.fail("Element stack too deep")
                     elif what == 'close':
                         if self.element_stack and tag_name == self.element_stack[-1]:
                             self.element_stack.pop(-1)
