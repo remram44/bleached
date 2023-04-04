@@ -26,3 +26,8 @@ bleached.UnsafeInput: Line 1 character 8 (input index 7): Found forbidden openin
 [bleach](https://github.com/mozilla/bleach) is a great library for sanitizing untrusted HTML. You should use it instead of this where possible.
 
 However, it offers no way to check that a piece of HTML has been sanitized. Running the HTML through bleach again will only work if you have the exact same version, as bleach makes no guarantee of stability of their input. This is where bleached is useful.
+
+## Warnings
+
+* No validation of attributes is performed. If you choose to allow an attribute, it is up to you to validate the values.
+* This accepts a much smaller subset of HTML than web browsers. Be ready for false negatives if you use this to validate HTML documents.
