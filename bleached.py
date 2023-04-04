@@ -37,6 +37,22 @@ HTML_ENTITIES = {
     'gt': '>',
 }
 
+DEFAULT_TAGS = {
+    'p', 'br', 'code', 'blockquote', 'pre',  # formatting
+    'sub', 'sup', 'caption',
+    'a', 'img',  # non-text
+    'h1', 'h2', 'h3', 'h4', 'h5',  # headers
+    'strong', 'em', 'b', 'u', 'q', 'del',  # emphasis
+    'ul', 'ol', 'li', 'dl', 'dt', 'dd',  # lists
+    'table', 'thead', 'tbody', 'tr', 'th', 'td',  # tables
+    'colgroup', 'col',  # columns
+}
+
+DEFAULT_ATTRIBUTES = {
+    'a': {'href', 'title'},
+    'img': {'src'},
+}
+
 
 class EndOfInput(ValueError):
     pass
@@ -63,8 +79,8 @@ class UnsafeInput(ValueError):
 def check_html(
     source,
     *,
-    tags=(),
-    attributes=None,
+    tags=DEFAULT_TAGS,
+    attributes=DEFAULT_ATTRIBUTES,
 ):
     Checker(source, tags=tags, attributes=attributes).check()
 
@@ -72,8 +88,8 @@ def check_html(
 def is_html_bleached(
     source,
     *,
-    tags=(),
-    attributes=None,
+    tags=DEFAULT_TAGS,
+    attributes=DEFAULT_ATTRIBUTES,
 ):
     try:
         check_html(source, tags=tags, attributes=attributes)
